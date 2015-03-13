@@ -1,8 +1,7 @@
 #!/usr/bin/env php
 <?php
 /**
- * User: Konstantin Ryapolov
- * Date: 03.02.14
+ * This file is part of the mtools/transportbox package.
  *
  * Test is full check public api TransportBox based on file;
  * insertRecords
@@ -31,10 +30,11 @@ $transport->insertRecords("three record");
 unset($transport);
 
 $checkBox = new \TransportBox\Driver\FileTransportBox($fileTest, 1);
-echo 'Box name: '. $checkBox->getNameBox()."\n\r";
-echo 'Box version: '. $checkBox->getVersion()."\n\r";
-echo 'Box metadata: '. $checkBox->getLengthBox()."\n\r";
-echo 'Box metadata: '. $checkBox->getMetaData()."\n\r";
-for($i=0;$i<$checkBox->getLengthBox(); $i++){
-	echo 'Box record № '.$i.' contained: '. $checkBox->getNextRecords()."\n\r";
+echo 'Box name: ' . $checkBox->getNameBox() . "\n\r";
+echo 'Box version: ' . $checkBox->getVersion() . "\n\r";
+echo 'Box metadata: ' . $checkBox->getLengthBox() . "\n\r";
+echo 'Box metadata: ' . $checkBox->getMetaData() . "\n\r";
+
+for ($i = 0; $i < $checkBox->getLengthBox(); $i++) {
+    echo 'Box record № ' . $i . ' contained: ' . $checkBox->getNextRecords() . "\n\r";
 }

@@ -1,12 +1,18 @@
 <?php
 /**
- * User: Konstantin Ryapolov
- * Date: 03.02.14
+ * This file is part of the mtools/transportbox package.
  */
 
 namespace TransportBox\Driver;
 use TransportBox\TransportBoxProvider;
 
+
+/**
+ * Class FileTransportBox
+ *
+ * @author kryapolov <kryapolov@yandex.ru>
+ * @package TransportBox\Driver
+ */
 class FileTransportBox extends TransportBoxProvider
 {
 

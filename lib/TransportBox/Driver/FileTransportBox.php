@@ -55,6 +55,12 @@ class FileTransportBox extends TransportBoxProvider
     private $errorSubject;
 
     /**
+     * version stub
+     * @var string
+     */
+    protected $version = null;
+
+    /**
      * Create a new FileTransportBox
      *
      * @param string $nameBox       filename
@@ -106,9 +112,13 @@ class FileTransportBox extends TransportBoxProvider
      */
     public function getVersion()
     {
-        fseek($this->descriptor, self::LENGTH_SIZE);
-        $version = fread($this->descriptor, self::LENGTH_VERSION);
-        return trim($version);
+        //FUTURE see http://php.net/manual/en/function.empty.php, for php 5.5 use empty
+        if (!isset($this->version) || $this->version == false) {
+            fseek($this->descriptor, self::LENGTH_SIZE);
+            $this->version = trim(fread($this->descriptor, self::LENGTH_VERSION));
+        }
+
+        return $this->version;
     }
 
     /**

@@ -58,7 +58,7 @@ class FileTransportBox extends TransportBoxProvider
      * Create a new FileTransportBox
      *
      * @param string $nameBox       filename
-     * @param        $accessMode    mode
+     * @param int    $accessMode    mode
      *
      * @internal param string $filename name of file(included and path)
      */
@@ -191,6 +191,7 @@ class FileTransportBox extends TransportBoxProvider
 
     /**
      * Init internal counter from opened Box
+     *
      * @return int count of record in current Box
      */
     private function _initLengthBox()
@@ -309,6 +310,7 @@ class FileTransportBox extends TransportBoxProvider
 
     /**
      * interpretation php handler interface
+     *`
      * @param int $errorCode
      * @param string $text
      */

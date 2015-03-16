@@ -19,7 +19,7 @@ require_once('../TransportBoxProvider.php');
 require_once('../Driver/FileTransportBox.php');
 
 $fileTest = 'test.db';
-$transport = new \TransportBox\Driver\FileTransportBox('test.db', 0);
+$transport = new \TransportBox\Driver\FileTransportBox($fileTest, 0);
 
 $transport->setVersion('1');
 $transport->setMetaData('tested data');

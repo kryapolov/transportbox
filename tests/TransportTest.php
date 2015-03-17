@@ -98,6 +98,27 @@ class TransportTest extends \PHPUnit_Framework_TestCase {
 
     }
 
+    public function testGetLengthBox()
+    {
+
+        $box = new FileTransportBox($this::TEST_FILENAME, 0);
+
+        $box->setMetaData($this::TEST_CHUNK);
+        $box->insertRecords($this::TEST_CHUNK);
+        $box->insertRecords($this::TEST_CHUNK);
+        $box->insertRecords($this::TEST_CHUNK);
+        unset($box);
+
+        $box = new FileTransportBox($this::TEST_FILENAME, 1);
+
+        $length = $box->getLengthBox();
+
+        $this->assertEquals($length, 3);
+
+    }
+
+
+
 
 
 

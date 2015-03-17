@@ -80,4 +80,25 @@ class TransportTest extends \PHPUnit_Framework_TestCase {
 
     }
 
+    public function testSetMetaData()
+    {
+
+        $box = new FileTransportBox($this::TEST_FILENAME, 0);
+
+        $box->setMetaData($this::TEST_CHUNK);
+        $box->insertRecords('123456789');
+        unset($box);
+
+        $box = new FileTransportBox($this::TEST_FILENAME, 1);
+
+
+        $record = $box->getMetaData();
+
+        $this->assertEquals($record, $this::TEST_CHUNK);
+
+    }
+
+
+
+
 }

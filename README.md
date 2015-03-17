@@ -30,4 +30,6 @@ license.
 ## Examples
 
 - exec test: phpunit -c build/phpunit.xml --coverage-text
-- See example.php in the examples directory.
+- exec generate autoload: phpab --output lib/TransportBox/autoload.php lib/TransportBox
+- exec example: php examples/example.php
+- For detail see example.php in the examples directory.

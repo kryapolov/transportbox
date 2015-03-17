@@ -2,7 +2,11 @@
 # TransportBox
 ## Implement simpte transport conteiner for PHP
 
-* Version: **0.0.1**
+---- Version: **0.0.1**
+
+add test-s, refactoring any internal method and reorganize structure of package
+
+---- Version: **0.0.1**
 
 A simple transport conteiner package for PHP 5.3/5.4.
 
@@ -29,4 +33,7 @@ license.
 
 ## Examples
 
-- See example.php in the examples directory.
+- exec test: phpunit -c build/phpunit.xml --coverage-text
+- exec generate autoload: phpab --output lib/TransportBox/autoload.php lib/TransportBox
+- exec example: php examples/example.php
+- For detail see example.php in the examples directory.

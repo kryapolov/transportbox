@@ -1,12 +1,18 @@
 <?php
 /**
- * User: Konstantin Ryapolov
- * Date: 03.02.14
+ * This file is part of the mtools/transportbox package.
  */
 
 namespace TransportBox\Driver;
 use TransportBox\TransportBoxProvider;
 
+
+/**
+ * Class FileTransportBox
+ *
+ * @author kryapolov <kryapolov@yandex.ru>
+ * @package TransportBox\Driver
+ */
 class FileTransportBox extends TransportBoxProvider
 {
 
@@ -49,10 +55,16 @@ class FileTransportBox extends TransportBoxProvider
     private $errorSubject;
 
     /**
+     * version stub
+     * @var string
+     */
+    protected $version = null;
+
+    /**
      * Create a new FileTransportBox
      *
      * @param string $nameBox       filename
-     * @param        $accessMode    mode
+     * @param int    $accessMode    mode
      *
      * @internal param string $filename name of file(included and path)
      */
@@ -100,9 +112,13 @@ class FileTransportBox extends TransportBoxProvider
      */
     public function getVersion()
     {
-        fseek($this->descriptor, self::LENGTH_SIZE);
-        $version = fread($this->descriptor, self::LENGTH_VERSION);
-        return trim($version);
+        //FUTURE see http://php.net/manual/en/function.empty.php, for php 5.5 use empty
+        if (!isset($this->version) || $this->version == false) {
+            fseek($this->descriptor, self::LENGTH_SIZE);
+            $this->version = trim(fread($this->descriptor, self::LENGTH_VERSION));
+        }
+
+        return $this->version;
     }
 
     /**
@@ -185,6 +201,7 @@ class FileTransportBox extends TransportBoxProvider
 
     /**
      * Init internal counter from opened Box
+     *
      * @return int count of record in current Box
      */
     private function _initLengthBox()
@@ -236,7 +253,7 @@ class FileTransportBox extends TransportBoxProvider
     /**
      * Formatter 'access mode' to 'file-access-modes'
      *
-     * @param $accessMode
+     * @param int $accessMode
      *
      * @throws \InvalidArgumentException
      */
@@ -303,6 +320,7 @@ class FileTransportBox extends TransportBoxProvider
 
     /**
      * interpretation php handler interface
+     *`
      * @param int $errorCode
      * @param string $text
      */

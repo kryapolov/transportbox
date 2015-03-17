@@ -1,11 +1,16 @@
 <?php
 /**
- * User: Konstantin Ryapolov
- * Date: 03.02.14
+ * This file is part of the mtools/transportbox package.
  */
 
 namespace TransportBox;
 
+/**
+ * Class TransportBoxProvider
+ *
+ * @author kryapolov <kryapolov@yandex.ru>
+ * @package TransportBox
+ */
 abstract class TransportBoxProvider implements TransportBox
 {
 

@@ -25,7 +25,7 @@ class TransportTest extends \PHPUnit_Framework_TestCase {
     public function testVersionHasBeSet()
     {
 
-        $box = new \TransportBox\Driver\FileTransportBox($this::TEST_FILENAME, 0);
+        $box = new FileTransportBox($this::TEST_FILENAME, 0);
 
         $box->setVersion($this::TEST_VERSION);
         // Act
@@ -37,7 +37,7 @@ class TransportTest extends \PHPUnit_Framework_TestCase {
 
     public function testGetNameBox() {
 
-        $box = new \TransportBox\Driver\FileTransportBox($this::TEST_FILENAME, 0);
+        $box = new FileTransportBox($this::TEST_FILENAME, 0);
 
         $nameBox = $box->getNameBox();
         // Act
@@ -49,7 +49,7 @@ class TransportTest extends \PHPUnit_Framework_TestCase {
 
     public function testInsertRecords() {
 
-        $box = new \TransportBox\Driver\FileTransportBox($this::TEST_FILENAME, 0);
+        $box = new FileTransportBox($this::TEST_FILENAME, 0);
 
         $box->insertRecords($this::TEST_CHUNK);
         $lenChunk = strlen($this::TEST_CHUNK);
@@ -59,6 +59,24 @@ class TransportTest extends \PHPUnit_Framework_TestCase {
         unset($box);
 
         $this->assertEquals(@filesize($this::TEST_FILENAME), $totalLength);
+
+    }
+
+    public function testGetNextRecords()
+    {
+
+        $box = new FileTransportBox($this::TEST_FILENAME, 0);
+
+        $box->insertRecords('123456789');
+        $box->insertRecords($this::TEST_CHUNK);
+        unset($box);
+
+        $box = new FileTransportBox($this::TEST_FILENAME, 1);
+
+        $box->getNextRecords();
+        $record = $box->getNextRecords();
+
+        $this->assertEquals($record, $this::TEST_CHUNK);
 
     }
 

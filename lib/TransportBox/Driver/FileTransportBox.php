@@ -253,7 +253,7 @@ class FileTransportBox extends TransportBoxProvider
     /**
      * Formatter 'access mode' to 'file-access-modes'
      *
-     * @param $accessMode
+     * @param int $accessMode
      *
      * @throws \InvalidArgumentException
      */

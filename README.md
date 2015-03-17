@@ -29,4 +29,5 @@ license.
 
 ## Examples
 
+- exec test: phpunit -c build/phpunit.xml --coverage-text
 - See example.php in the examples directory.

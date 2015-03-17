@@ -14,9 +14,7 @@
  * getNameBox
  */
 
-require_once('../TransportBox.php');
-require_once('../TransportBoxProvider.php');
-require_once('../Driver/FileTransportBox.php');
+require_once('lib/TransportBox/autoload.php');
 
 $fileTest = 'test.db';
 $transport = new \TransportBox\Driver\FileTransportBox($fileTest, 0);

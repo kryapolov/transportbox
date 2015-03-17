@@ -1,14 +1,14 @@
 <?php
 
-namespace TransportBox\Test;
+namespace TransportBox\tests;
 use TransportBox\Driver\FileTransportBox;
 
 /**
- * Class VersionTestCase
+ * Class TransportTest
  *
- * @package TransportBox\Test
+ * @package TransportBox\tests
  */
-class FileTransportTestCase extends \PHPUnit_Framework_TestCase {
+class TransportTest extends \PHPUnit_Framework_TestCase {
 
     const TEST_VERSION        = 4;
     const TEST_FILENAME       = 'test.db';
